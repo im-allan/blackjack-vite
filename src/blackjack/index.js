@@ -37,16 +37,18 @@ import { crearDeck, pedirCarta, turnoMaquina, acumularPuntos, crearCarta } from 
         const carta = pedirCarta(deck);
         const puntosJugador = acumularPuntos(carta, 0, puntosJugadores, puntosHTML);
         crearCarta(carta, 0, divCartasJugadores);
-
+        btnNuevo.disabled = true;
         if (puntosJugador > 21) {
             console.warn('Has perdido');
             btnPedir.disabled = true;
             btnDetener.disabled = true;
+            btnNuevo.disabled = false;
             turnoMaquina(puntosJugador, deck, puntosJugadores, puntosHTML, divCartasJugadores);
         } else if (puntosJugador === 21) {
             console.warn('Has ganado');
             btnPedir.disabled = true;
             btnDetener.disabled = true;
+            btnNuevo.disabled = false;
             turnoMaquina(puntosJugador, deck, puntosJugadores, puntosHTML, divCartasJugadores);
         }
     });
@@ -54,6 +56,7 @@ import { crearDeck, pedirCarta, turnoMaquina, acumularPuntos, crearCarta } from 
     btnDetener.addEventListener('click', () => {
         btnPedir.disabled = true;
         btnDetener.disabled = true;
+        btnNuevo.disabled = false;
         turnoMaquina(puntosJugadores[0], deck, puntosJugadores, puntosHTML, divCartasJugadores);
     });
 

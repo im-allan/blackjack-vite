@@ -16,5 +16,5 @@ export const determinarGanador = (puntosJugadores) => {
         } else {
             alert('El ganador es la máquina')
         }
-    }, 100);
+    }, 350);
 }
